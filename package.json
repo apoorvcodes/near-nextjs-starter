@@ -1,0 +1,22 @@
+{
+  "name": "near-mint",
+  "version": "1.0.0",
+  "license": "(MIT AND Apache-2.0)",
+  "scripts": {
+    "dev": "cd frontend && yarn run dev",
+    "deploy": "cd contract && yarn run deploy",
+    "build": "yarn run build:contract && yarn run build:web",
+    "build:web": "cd frontend && yarn run build",
+    "build:contract": "cd contract && yarn run build",
+    "test": "yarn run test:unit && yarn run test:integration",
+    "test:unit": "cd contract && yarn test",
+    "test:integration": "yarn run build:contract && cd integration-tests && yarn test  -- -- \"./contract/build/hello_near.wasm\"",
+    "deps-install": "yarn install && cd contract && yarn install && cd ../integration-tests && yarn install && cd ../frontend && yarn install && cd .."
+  },
+  "devDependencies": {
+    "near-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "near-api-js": "^1.0.0"
+  }
+}
